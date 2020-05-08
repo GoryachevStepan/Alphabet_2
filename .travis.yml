@@ -1,0 +1,15 @@
+language: c++
+
+sudo:false
+
+notifications:
+ email:
+   recipients:
+    - goryachev.stepan@yandex.ru
+   on_success: never
+   on_failure: always
+
+dist: xenial
+
+script:
+  - git ls-files src/ | xargs clang-format -i && git diff --exit-code
