@@ -25,6 +25,25 @@ bool try_read_data(string& bufer, string file_name)
 	return true;
 }
 
+void parse(string& bufer, list_element& head, list_element& tail)
+{
+	bool new_word = true;
+	char* symbol = &bufer[0];
+	while (*symbol != 0) 
+	{
+		if (!is_letter(*symbol))
+		{
+			new_word = true;
+		}
+		else if (is_letter(*symbol) && new_word)
+		{
+			add_to_list(symbol, head, tail);
+			new_word = false;
+		}
+		symbol++;
+	}
+}
+
 int main()
 {
 	string a;
