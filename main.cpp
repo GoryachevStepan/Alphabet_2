@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "list_element.h"
 
 using namespace std;
 
@@ -27,6 +28,8 @@ bool try_read_data(string& bufer, string file_name)
 int main()
 {
 	string a;
+	list_element head;
+	list element tail;
 	string file_name;
 	string bufer = "";
 	cout << "Enter file path: ";
