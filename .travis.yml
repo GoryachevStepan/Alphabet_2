@@ -13,6 +13,6 @@ notifications:
     - goryachev.stepan@yandex.ru
     on_success: never
     on_failure: always
-script:
-- git ls-files *.cpp *.h | xargs clang-format -i
+#script:
+#- git ls-files *.cpp *.h | xargs clang-format -i
 #- git ls-files *.cpp *.h | xargs clang-format -i && git diff --exit-code
