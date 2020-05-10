@@ -1,5 +1,4 @@
-language: c++
-sudo: false
+language: cpp
 dist: xenial
 compiler:
 - clang
@@ -15,4 +14,4 @@ notifications:
     on_success: never
     on_failure: always
 script:
-- git ls-files src/ | xargs clang-format -i && git diff --exit-code
+- git ls-files *.cpp *.h | xargs clang-format -i && git diff --exit-code
