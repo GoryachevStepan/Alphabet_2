@@ -1,15 +1,18 @@
 language: c++
-
-sudo:false
-
-notifications:
- email:
-   recipients:
-    - goryachev.stepan@yandex.ru
-   on_success: never
-   on_failure: always
-
+sudo: false
 dist: xenial
-
+compiler:
+- clang
+os:
+- linux
+branches:
+  only:
+  - master
+notifications:
+  email:
+    recipients:
+    - goryachev.stepan@yandex.ru
+    on_success: never
+    on_failure: always
 script:
-  - git ls-files src/ | xargs clang-format -i && git diff --exit-code
+- git ls-files src/ | xargs clang-format -i && git diff --exit-code
