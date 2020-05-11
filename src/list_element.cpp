@@ -5,16 +5,16 @@
 using namespace std;
 
 list_element::list_element() {
-	data = NULL;
-	prev = NULL;
-	next = NULL;
+    data = NULL;
+    prev = NULL;
+    next = NULL;
 }
 
 
 list_element::list_element(char* word) {
-	data = word;
-	prev = NULL;
-	next = NULL;
+    data = word;
+    prev = NULL;
+    next = NULL;
 }
 list_element::~list_element() {
 
