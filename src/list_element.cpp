@@ -10,7 +10,7 @@ list_element::list_element() {
   next = NULL;
 }
 
-list_element::list_element(char* word) {
+list_element::list_element(char *word) {
   data = word;
   prev = NULL;
   next = NULL;
