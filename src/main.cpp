@@ -1,7 +1,7 @@
+#include "list_element.h"
+#include <fstream>
 #include <iostream>
 #include <string>
-#include <fstream>
-#include "list_element.h"
 
 using namespace std;
 
@@ -11,9 +11,9 @@ bool try_read_data(string &bufer, string file_name) {
     string line;
     while (getline(input, line)) {
       bufer += line + " ";
-     }
+    }
   } else {
-     input.close();
+    input.close();
     return false;
   }
   input.close();
@@ -32,8 +32,8 @@ void add_to_list(char *word, list_element &head, list_element &tail) {
       if (elem->next == NULL)
         break;
       elem = elem->next;
-     }
-	if (elem == &head && compare(elem->data, word) >= 0) {
+    }
+    if (elem == &head && compare(elem->data, word) >= 0) {
       new_elem->next = elem->next;
       elem->next = new_elem;
       if (new_elem->next != NULL)
@@ -51,7 +51,7 @@ void add_to_list(char *word, list_element &head, list_element &tail) {
       new_elem->prev = elem->prev;
       new_elem->next = elem;
       elem->prev = new_elem;
-     }
+    }
   }
 }
 
