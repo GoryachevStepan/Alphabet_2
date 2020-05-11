@@ -82,4 +82,6 @@ int main() {
   if (!try_read_data(bufer, file_name)) {
     cout << "Error read data";
   }
+  parse(bufer, head, tail);
+  write_list(head);
 }
