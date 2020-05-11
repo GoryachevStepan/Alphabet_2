@@ -23,7 +23,7 @@ void write_list(list_element head) {
     char *symbol = elem->data;
     while (is_letter(*symbol)) {
       cout << *symbol;
-      symbol++; 
+      symbol++;
     }
     cout << endl;
     elem = elem->next;
