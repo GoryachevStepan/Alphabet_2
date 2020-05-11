@@ -64,7 +64,7 @@ void parse(string &bufer, list_element &head, list_element &tail) {
     } else if (is_letter(*symbol) && new_word) {
       add_to_list(symbol, head, tail);
       new_word = false;
-     }
+    }
     symbol++;
   }
 }
