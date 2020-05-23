@@ -78,8 +78,7 @@ void alphabet() {
   cout << "Введите путь к файлу: ";
   cin >> a;
   file_name = a;
-  if (!try_read_data(bufer, file_name))
-  {
+  if (!try_read_data(bufer, file_name)) {
     cout << "Извините, произошла ошибка при чтении файла" << endl;
     system("pause");
     return;
@@ -90,10 +89,11 @@ void alphabet() {
 
 int main() {
   setlocale(LC_ALL, "Rus");
-  while (1){
+  while (1) {
     system("cls");
     cout << "Выберите необходимое действие" << endl;
-    cout << "1 - Вывести содержимое текстового файла в алфавитном порядке" << endl;
+    cout << "1 - Вывести содержимое текстового файла в алфавитном порядке" 
+         << endl;
     cout << "2 - Выход" << endl;
     cout << "Введите число: ";
     int n;
