@@ -69,19 +69,45 @@ void parse(string &bufer, list_element &head, list_element &tail) {
   }
 }
 
-int main() {
+void alphabet() {
   string a;
   list_element head;
-  list element tail;
+  list_element tail;
   string file_name;
   string bufer = "";
-  cout << "Enter file path: ";
-  cout << endl;
+  cout << "Введите путь к файлу: ";
   cin >> a;
   file_name = a;
-  if (!try_read_data(bufer, file_name)) {
-    cout << "Error read data";
+  if (!try_read_data(bufer, file_name))
+  {
+    cout << "Извините, произошла ошибка при чтении файла" << endl;
+    system("pause");
+    return;
   }
   parse(bufer, head, tail);
   write_list(head);
+}
+
+int main() {
+  setlocale(LC_ALL, "Rus");
+  while (1){
+    system("cls");
+    cout << "Выберите необходимое действие" << endl;
+    cout << "1 - Вывести содержимое текстового файла в алфавитном порядке" << endl;
+    cout << "2 - Выход" << endl;
+    cout << "Введите число: ";
+    int n;
+    cin >> n;
+    switch (n) {
+    case 1:
+      alphabet();
+      break;
+    case 2:
+      return 0;
+      break;
+    default:
+      cout << "Некорректный ввод" << endl;
+      system("pause");
+    }
+  }
 }
