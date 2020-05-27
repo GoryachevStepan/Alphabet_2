@@ -20,11 +20,10 @@ bool try_read_data(string &bufer, string file_name) {
   return true;
 }
 
-void add_to_list(char *word, list_element &head, list_element &tail) {
+void add_to_list(char *word, list_element &head) {
   if (head.data == NULL) {
     list_element *elem = new list_element(word);
     head = *elem;
-    tail = head;
   } else {
     list_element *new_elem = new list_element(word);
     list_element *elem = &head;
@@ -45,7 +44,6 @@ void add_to_list(char *word, list_element &head, list_element &tail) {
       new_elem->prev = elem;
       new_elem->next = NULL;
       elem->next = new_elem;
-      tail = *new_elem;
     } else {
       elem->prev->next = new_elem;
       new_elem->prev = elem->prev;
@@ -55,14 +53,14 @@ void add_to_list(char *word, list_element &head, list_element &tail) {
   }
 }
 
-void parse(string &bufer, list_element &head, list_element &tail) {
+void parse(string &bufer, list_element &head) {
   bool new_word = true;
   char *symbol = &bufer[0];
   while (*symbol != 0) {
     if (!is_letter(*symbol)) {
       new_word = true;
     } else if (is_letter(*symbol) && new_word) {
-      add_to_list(symbol, head, tail);
+      add_to_list(symbol, head);
       new_word = false;
     }
     symbol++;
@@ -72,7 +70,6 @@ void parse(string &bufer, list_element &head, list_element &tail) {
 void alphabet() {
   string a;
   list_element head;
-  list_element tail;
   string file_name;
   string bufer = "";
   cout << "Введите путь к файлу: ";
@@ -83,7 +80,7 @@ void alphabet() {
     system("pause");
     return;
   }
-  parse(bufer, head, tail);
+  parse(bufer, head);
   write_list(head);
 }
 
