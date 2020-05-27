@@ -1,6 +1,5 @@
 #include "list_element.h"
 #include <iostream>
-#define NULL 0;
 
 using namespace std;
 
