@@ -1,31 +1,37 @@
-OBJ_CATALOG=build/src
-OBJ_CATALOG_TEST=build/test
+all: bin/Alphabet
 
-CC=gcc
-CFLAGS=-c -Wall -Werror
-LDFLAGS=-Wall -Werror
-SOURCES=main.cpp text.cpp list_element.cpp
-SOURCES_TEST=main-test.c text.cpp list_element.cpp
-VPATH=src test
+test: bin/unit_test
+	./bin/unit_test
 
-.PHONY: all clean
+bin/unit_test: build/test/main.o build/test/text.o build/test/main_test.o build/test/list_element.o
+	g++ -Wall -Werror build/test/main_test.o build/test/main.o build/test/text.o build/tests.o -o bin/test_app build/test/list_element.o
 
-OBJECTS=$(addprefix $(OBJ_CATALOG)/, $(SOURCES:.c=.o))
-OBJECTS_TEST=$(addprefix $(OBJ_CATALOG_TEST)/, $(SOURCES_TEST:.c=.o))
-EXECUTABLE=converter
+build/test/main_test.o: test/main.cpp
+	g++ -Wall -Werror -I thirdparty -I src -c test/main.cpp -o build/test/main_test.o 
 
-all: $(SOURCES) $(EXECUTABLE)
+build/test/main.o: src/main.cpp
+	g++ -Wall -Werror -I thirdparty -I src -c src/main.cpp -o build/test/main.o
 
-$(EXECUTABLE): $(OBJECTS) $(OBJECTS_TEST)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o bin/main
-	$(CC) $(LDFLAGS) $(OBJECTS_TEST) -o bin/main_test
-	./bin/main_test
+build/test/text.o: src/text.cpp
+	g++ -Wall -Werror -I thirdparty -I src -c src/text.cpp -o build/test/text.o
 
-$(OBJ_CATALOG)/%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+build/test/list_element.o: src/list_element.cpp
+	g++ -Wall -Werror -I thirdparty -I src -c src/list_element.cpp -o build/test/list_element.o
 
-$(OBJ_CATALOG_TEST)/%.o: %.c
-	$(CC) -I thirdparty -I src $(CFLAGS) $< -o $@
+
+bin/Alphabet: build/main.o build/text.o build/list_element.o
+	g++ -Wall -Werror build/src/main.o build/src/text.o build/src/list_element.o -o bin/Alphabet
+
+build/list_element.o: src/list_element.cpp
+	g++ -Wall -Werror -c src/list_element.cpp -o build/src/list_element.o 
+
+build/text.o: src/text.cpp
+	g++ -Wall -Werror -c src/text.cpp -o build/src/text.o 
+
+build/main.o: src/main.cpp
+	g++ -Wall -Werror -c src/main.cpp -o build/src/main.o 
 
 clean:
-	rm -rf $(OBJ_CATALOG)/.o $(OBJ_CATALOG_TEST)/.o bin/*.exe
+	rm -rf build/src/*.o build/test/*.o bin/Alphabet bin/unit_test
+
+.PHONY: all clean test

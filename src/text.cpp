@@ -1,7 +1,5 @@
-#pragma once
-
 bool is_letter(char symbol) {
-  return (symbol >= 'a' && symbol <= 'z' || symbol >= 'A' && symbol <= 'Z');
+  return ((symbol >= 'a' && symbol <= 'z') || (symbol >= 'A' && symbol <= 'Z'));
 }
 
 char to_lover(char symbol) {

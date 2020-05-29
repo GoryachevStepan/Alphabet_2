@@ -1,4 +1,5 @@
 #include "list_element.h"
+#include "text.h"
 #include <iostream>
 
 using namespace std;
